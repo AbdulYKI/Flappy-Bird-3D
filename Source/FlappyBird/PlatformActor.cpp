@@ -126,7 +126,7 @@ void APlatformActor::OnScoreBoxOverlapEnd(UPrimitiveComponent* OverlappedComp, A
 		UGameplayStatics::SpawnSoundAttached(ScoreSound, ScoreBox);
 		MoveScoreBoxToNextPairOfPipes();
 		GameModeRef->IncreaseScore();
-		UE_LOG(LogTemp, Warning, TEXT("Score!"));
+		
 	}
 	
 
@@ -149,6 +149,7 @@ void APlatformActor::SpawnPipes()
 void APlatformActor::MoveScoreBoxToNextPairOfPipes()
 {
 	ScoreBoxPipeIndex = (ScoreBoxPipeIndex + 1) % NumberOfPipePairs;
+
 	FVector FloorPipeLocation = FloorPipes[ScoreBoxPipeIndex]->GetActorLocation();
 	FVector CurrentScoreBoxLocation = ScoreBox->GetComponentLocation();
 	FVector TargetLocationForScoreBox = FVector(CurrentScoreBoxLocation.X, FloorPipeLocation.Y, CurrentScoreBoxLocation.Z);

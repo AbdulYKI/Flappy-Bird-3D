@@ -90,6 +90,8 @@ void AFlappyBirdCharacter::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other,
 		{
 			DisableControllerInput();
 			PlayerControllerRef->SetShowMouseCursor(true);
+			GetMesh()->SetSimulatePhysics(true);
+			GetMesh()->AddImpulse(-Hit.ImpactPoint * 5.0f);
 		}
 		else
 		{
